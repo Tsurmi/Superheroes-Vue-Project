@@ -1,0 +1,11 @@
+{
+  "name": "superheroes_vue",
+  "version": "1.0.0",
+  "description": "Superheroes VueJS and Express/Mongoos project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Travis Surmi",
+  "license": "ISC"
+}
