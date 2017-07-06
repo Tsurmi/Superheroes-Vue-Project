@@ -14,9 +14,20 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.get('/', function(req,res){
   Superhero.find(function(err,superheroes){
     if (err) throw err;
-    res.json({data: superheroes, message: 'Heroes successfully received!' });
+    res.json({data: superheroes, message: 'Heroes successfully received!'});
   });
 });
+//req is an object
+// params is an unique identifier
+//findById method to spice out the req.params._id)
+app.get('/:_id', function(req,res){
+  Superhero.findById(req.params._id, function(err, superhero){
+    if (err) throw err;
+    res.json({data: superhero, message: "Hero received"});
+  });
+});
+
+
 
 app.post('/', function(req, res) {
   var superhero = new Superhero();
