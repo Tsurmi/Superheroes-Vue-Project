@@ -12,7 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true}));
 
 
 app.get('/', function(req,res){
-  res.send('hello');
+  Superhero.find(function(err,superheroes){
+    if (err) throw err;
+    res.json({data: superheroes, message: 'Heroes successfully received!' });
+  });
 });
 
 app.post('/', function(req, res) {
@@ -20,12 +23,12 @@ app.post('/', function(req, res) {
   superhero.name = req.body.name;
   superhero.superpower = req.body.superpower;
 
-  superhero.save().then(function(superhero) {
+  superhero.save().then(function(superhero){
     res.send(superhero);
   }, function(err) {
-    res.send("Failed to save :( ")
-  })
-})
+    res.send(err);
+  });
+});
 var server = app.listen(port, function(){
   console.log("Listening on port:",port);
 });
