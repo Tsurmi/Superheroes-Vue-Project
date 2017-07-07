@@ -29,6 +29,9 @@
                 <div class="col-md-4">
                   <img :src="h.img"/>
                 </div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-danger" v-on:click='deleteHero(h._id)'>Delete Hero</button>
+                </div>
             </div>
         </div>
     </div>

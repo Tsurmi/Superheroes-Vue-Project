@@ -40,6 +40,16 @@ var app = new Vue({
       }).done(function(response){
         console.log(response.data, "Hero Created");
       });
+    },
+    deleteHero: function(_id){
+      console.log('Deleteing hero', _id);
+      var slef = this;
+      $.ajax({
+        method: "DELETE",
+        url: "/api/"+_id
+      }).done(function(response){
+        console.log(response);
+      })
     }
   }
 });
