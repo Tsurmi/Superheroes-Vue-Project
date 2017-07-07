@@ -16,8 +16,11 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/api', function(req,res){
   Superhero.find(function(err,superheroes){
-    if (err) throw err;
-    res.json({data: superheroes, message: 'Heroes successfully received!'});
+    if (err){
+      res.send(err)
+    }else{
+      res.json({data: superheroes, message: 'Heroes successfully received!'});
+    }
   });
 });
 //req is an object
@@ -25,8 +28,11 @@ app.get('/api', function(req,res){
 //findById method to spice out the req.params._id)
 app.get('/api/:_id', function(req,res){
   Superhero.findById(req.params._id, function(err, superhero){
-    if (err) throw err;
-    res.json({data: superhero, message: "Hero received"});
+    if (err){
+      res.send(err)
+    }else{
+      res.json({data: superhero, message: "Hero received"});
+    }
   });
 });
 
@@ -38,12 +44,21 @@ app.post('/api', function(req, res) {
   superhero.img = req.body.img;
 
   superhero.save().then(function(superhero){
-    res.json({message:"hero succesfully created", data: superhero});
+    res.json({message:"Hero succesfully created", data: superhero});
   }, function(err) {
-    res.send("Failed to save");
-
+    res.send(err);
   });
 });
 var server = app.listen(port, function(){
   console.log("Listening on port:",port);
+});
+
+app.delete("/api/:_id", function(req,res){
+  Superhero.remove({_id: req.params._id}, function(err){
+    if(err){
+      res.send(err)
+    }else{
+      res.send("Superhero Deleted!");
+    }
+  });
 });
