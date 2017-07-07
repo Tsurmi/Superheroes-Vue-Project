@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static(__dirname + '/public'));
 
 
-app.get('/api', function(req,res){
+app.get('/api/heroes', function(req,res){
   Superhero.find(function(err,superheroes){
     if (err){
       res.send(err)
@@ -26,7 +26,7 @@ app.get('/api', function(req,res){
 //req is an object
 // params is an unique identifier
 //findById method to spice out the req.params._id)
-app.get('/api/:_id', function(req,res){
+app.get('/api/heroes/:_id', function(req,res){
   Superhero.findById(req.params._id, function(err, superhero){
     if (err){
       res.send(err)
@@ -36,7 +36,7 @@ app.get('/api/:_id', function(req,res){
   });
 });
 
-app.post('/api', function(req, res) {
+app.post('/api/heroes', function(req, res) {
   console.log("Hitting post route");
   var superhero = new Superhero();
   superhero.name = req.body.name;
@@ -53,7 +53,7 @@ var server = app.listen(port, function(){
   console.log("Listening on port:",port);
 });
 
-app.delete("/api/:_id", function(req,res){
+app.delete("/api/heroes/:_id", function(req,res){
   Superhero.remove({_id: req.params._id}, function(err){
     if(err){
       res.send(err)

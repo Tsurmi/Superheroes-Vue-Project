@@ -19,7 +19,7 @@ var app = new Vue({
       var self = this;
     $.ajax({
         method: "GET",
-        url: "/api"
+        url: "/api/heroes"
     }).done(function(response){
         self.heroes = response.data;
         console.log("received heroes", self.heroes);
@@ -34,7 +34,7 @@ var app = new Vue({
       };
       console.log("newSuperHero");
       $.ajax({
-        url:'/api',
+        url:'/api/heroes',
         method:'POST',
         data: newSuperHero
       }).done(function(response){
@@ -46,7 +46,7 @@ var app = new Vue({
       var slef = this;
       $.ajax({
         method: "DELETE",
-        url: "/api/"+_id
+        url: "/api/heroes/"+_id
       }).done(function(response){
         console.log(response);
       })
