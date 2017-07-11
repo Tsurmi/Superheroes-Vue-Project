@@ -9,7 +9,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="/styles.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -17,24 +17,26 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+
+
   <body>
     <div id="app">
-        <div class="container jumbotron">
+
+        <div class="container-jumbotron">
             <h1>{{ title }}</h1>
         </div>
-        <div class="container">
+          <div class="container">
             <div class="row" v-for="h in heroes">
-                <div class="col-md-4">{{ h.name }}</div>
-                <div class="col-md-4">{{ h.superpower }}</div>
-                <div class="col-md-4">
-                  <img :src="h.img"/>
-                </div>
+                <div class="col-md-4"></div>
+                  <h2>{{  h.name }}</h2>
+                  <h3>{{  h.superpower }}</h3>
+                  <img class='hero-image' :src="h.img"/>
                 <div class="col-md-12">
                     <button type="button" class="btn btn-danger" v-on:click='deleteHero(h._id)'>Delete Hero</button>
                 </div>
+              </div>
             </div>
         </div>
-    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

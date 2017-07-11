@@ -1,4 +1,4 @@
-var title = "Superheroes";
+var title = "Superheroes: Justice League";
 var appUrl = "/api"
 var app = new Vue({
   el: "#app",
