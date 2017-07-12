@@ -18,15 +18,6 @@ app.use(express.static(__dirname + '/public'));
 
 
 
-app.get('/api/heroes', function(req,res){
-  Superhero.find(function(err,superheroes){
-    if (err){
-      res.send(err)
-    }else{
-      res.json({data: superheroes, message: 'Heroes successfully received!'});
-    }
-  });
-});
 //req is an object
 // params is an unique identifier
 //findById method to spice out the req.params._id)
@@ -39,24 +30,6 @@ app.get('/api/heroes/:_id', function(req,res){
     }
   });
 });
-
-app.post('/api/heroes', function(req, res) {
-  console.log("Hitting post route");
-  var superhero = new Superhero();
-  superhero.name = req.body.name;
-  superhero.superpower = req.body.superpower;
-  superhero.img = req.body.img;
-
-  superhero.save().then(function(superhero){
-    res.json({message:"Hero succesfully created", data: superhero});
-  }, function(err) {
-    res.send(err);
-  });
-});
-var server = app.listen(port, function(){
-  console.log("Listening on port:",port);
-});
-
 app.delete("/api/heroes/:_id", function(req,res){
   Superhero.remove({_id: req.params._id}, function(err){
     if(err){
@@ -65,4 +38,8 @@ app.delete("/api/heroes/:_id", function(req,res){
       res.send("Superhero Deleted!");
     }
   });
+});
+
+var server = app.listen(port, function(){
+  console.log("Listening on port:",port);
 });

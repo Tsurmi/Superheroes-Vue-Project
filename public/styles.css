@@ -2,9 +2,11 @@
   background-image: url("https://i.kinja-img.com/gawker-media/image/upload/s--YtXduPhX--/c_scale,fl_progressive,q_80,w_800/uybmnef1nha4xqbvbqty.jpg"); no-repeat center center;
   display: flex;
   height: 400px;
-  text-align: center;
   color: white;
   text-shadow: #444 0 1px 1px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .container {

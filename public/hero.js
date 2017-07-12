@@ -1,4 +1,4 @@
-var title = "Superheroes: Justice League";
+var title = "Superheroes: Justice League and Friends";
 var appUrl = "/api"
 var app = new Vue({
   el: "#app",
@@ -39,6 +39,7 @@ var app = new Vue({
         method:'POST',
         data: newSuperHero
       }).done(function(response){
+        console.log(response);
         console.log(response.data, "Hero Created");
       });
     },
