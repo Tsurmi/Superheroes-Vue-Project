@@ -24,4 +24,8 @@ Router.route('/').get(function(req,res){
   });
 });
 
+Router.route('/:_id').get(function(req,res){
+  res.send("Got one");
+});
+
 module.exports = Router;
