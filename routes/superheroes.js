@@ -25,7 +25,10 @@ Router.route('/').get(function(req,res){
 });
 
 Router.route('/:_id').get(function(req,res){
-  res.send("Got one");
+  Superhero.findById(req.params._id, function(err, superhero){
+      console.log("found superhero", superhero);
+      res.send('found superhero');
+  });
 });
 
 module.exports = Router;
