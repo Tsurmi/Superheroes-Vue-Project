@@ -32,10 +32,19 @@ Router.route('/:_id').get(function(req,res){
       res.json({data: superhero, message: "Superhero received"});
     }
   });
+}).delete(function(req,res){
+  // first parameter is called a search obect (method find also takes a serach object)
+  Superhero.remove({_id: req.params._id}, function(err) {
+    if(err){
+      res.send(err);
+    }else{
+      res.send("Superhero was Deleted!");
+    }
+  });
 });
 
 module.exports = Router;
 
 //req is an object
-// params is an unique identifier
+//params is an unique identifier
 //findById method to spice out the req.params._id)
