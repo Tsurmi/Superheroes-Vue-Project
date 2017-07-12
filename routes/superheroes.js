@@ -26,9 +26,16 @@ Router.route('/').get(function(req,res){
 
 Router.route('/:_id').get(function(req,res){
   Superhero.findById(req.params._id, function(err, superhero){
-      console.log("found superhero", superhero);
-      res.send('found superhero');
+    if(err){
+      res.send(err,"error");
+    }else{
+      res.json({data: superhero, message: "Superhero received"});
+    }
   });
 });
 
 module.exports = Router;
+
+//req is an object
+// params is an unique identifier
+//findById method to spice out the req.params._id)

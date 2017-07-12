@@ -16,19 +16,6 @@ app.use("/api/heroes", heroRoutes);
 //links the html,css and js files together
 app.use(express.static(__dirname + '/public'));
 
-//req is an object
-// params is an unique identifier
-//findById method to spice out the req.params._id)
-app.get('/api/heroes/:_id', function(req,res){
-  Superhero.findById(req.params._id, function(err, superhero){
-    if (err){
-      res.send(err)
-    }else{
-      res.json({data: superhero, message: "Hero received"});
-    }
-  });
-});
-
 app.delete("/api/heroes/:_id", function(req,res){
   Superhero.remove({_id: req.params._id}, function(err){
     if(err){
