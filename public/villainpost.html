@@ -9,7 +9,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/styles.css">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -17,33 +17,39 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-
-
   <body>
-    <div id="app">
+      <div id="app">
+        <div class="container-jumbotron">
+          <h1>{{ postTitle }}</h1>
 
-        <div class="jumbotron">
-            <h1>{{ title }}</h1>
         </div>
-          <div class="container">
-            <div class="row" v-for="v in villains">
-                <div class="col-md-4"></div>
-                  <h2>{{  v.name }}</h2>
-                  <h3>{{  v.evilPower }}</h3>
-                  <img class='villan-image' :src="v.img"/>
-                <div class="col-md-12">
-                    <button type="button" class="btn btn-danger" v-on:click='deleteVillan(v._id)'>Delete Villan</button>
-                </div>
-              </div>
-            </div>
-        </div>
+        <form v-on:submit.prevent='postVillain'>
+          <div class="col-md-12">
+              <label>Evil Name</label>
+              <input type="text" v-model="name"/>
+          </div>
+          <div class="col-md-12">
+              <label>Evil Power</label>
+              <input type="text" v-model="evilPower"/>
+          </div>
+          <div class="col-md-12">
+              <label>Villain Picture</label>
+              <input type="text" v-model="img"/>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class='btn btn-success'>Submit Villain</button>
+
+          </div>
+        </form>
+
+      </div>
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/vue"></script>
     <script type="text/javascript" src="./villain.js"></script>
-
-    </script>
   </body>
 </html>

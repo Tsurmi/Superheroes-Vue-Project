@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var VillainSchema = new mongoose.Schema({
 
     name: String,
-    evilPowers: String,
+    evilPower: String,
     img: String
 });
 

@@ -45,7 +45,7 @@ var app = new Vue({
     },
     deleteHero: function(_id){
       console.log('Deleteing hero', _id);
-      var slef = this;
+      var self = this;
       $.ajax({
         method: "DELETE",
         url: "/api/heroes/"+_id
