@@ -15,7 +15,8 @@ app.use(bodyParser.urlencoded({ extended: true}));
 //app.use("/api/main", mainRoutes);
 app.use("/api/heroes", heroRoutes);
 app.use('/api/villains',villainRoutes);
-//links the html,css and js files together
+
+
 app.use(express.static(__dirname + '/public'));
 
 var server = app.listen(port, function(){
