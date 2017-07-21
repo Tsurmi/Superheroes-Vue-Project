@@ -4,39 +4,50 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>Villains</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" href="villain.css">
   </head>
-
-
-  <body>
-    <div id="app">
+  <body class='container'>
+      <ul class='flex-container'>
+          <li><a href='#home'>HOME</a></li>
+          <li><a href='#About'>ABOUT</a></li>
+          <li><a href='#Special Powers'>POWERS</a></li>
+      </ul>
+      <div id="app">
 
         <div class="jumbotron">
             <h1>{{ title }}</h1>
+            <p>The bad guys!</p>
         </div>
-          <div class="container">
-            <div class="row" v-for="v in villains">
-                <div class="col-md-4"></div>
-                  <h2>{{  v.name }}</h2>
-                  <h3>{{  v.evilPower }}</h3>
-                  <img class='villan-image' :src="v.img"/>
-                <div class="col-md-12">
-                    <button type="button" class="btn btn-danger" v-on:click='deleteVillan(v._id)'>Delete Villan</button>
+          <div class="card-container">
+              <div class="card" v-for="(v, index) in villains">
+                <div class="faces front">
+                    <h2 class="card-header">{{  v.name }}</h2>
+                    <h3 class="evilpower">{{  v.evilPower }}</h3>
+                    <img class='villain-image' :src="v.img"/>
+                    <!-- <div class="col-md-12">
+                      <button type="button" class="btn-danger" v-on:click='deleteVillan(v._id)'>Delete Villan</button>
+                    </div> -->
                 </div>
-              </div>
+                  <div class="faces back">
+                    <h2 class="card-header">{{ heroes[index].name }}</h2>
+                    <h3 class="superpower">{{ heroes[index].superpower }}</h3>
+                    <img class="superhero-img" :src="heroes[index].img"/>
+                  </div>
             </div>
         </div>
+      </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -44,6 +55,5 @@
     <script src="https://unpkg.com/vue"></script>
     <script type="text/javascript" src="./villain.js"></script>
 
-    </script>
   </body>
 </html>

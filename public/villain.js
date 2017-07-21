@@ -1,10 +1,13 @@
-var title = "Villains: Taking down the Good Guys!"
+var title = "SUPER VILLAINS"
 var appUrl = "/api"
 var app = new Vue({
   el: "#app",
   data: {
     title: title,
     villains: undefined,
+    heroes: undefined,
+    villainsSize: 0,
+    heroesSize: 0,
     postTitle: "Create a Villain",
     name: undefined,
     evilPower: undefined,
@@ -12,6 +15,7 @@ var app = new Vue({
   },
   created: function(){
     this.fetchData();
+    this.fetchHeroes();
   },
   methods: {
     fetchData: function(){
@@ -22,7 +26,22 @@ var app = new Vue({
       }).done(function(response){
         console.log(response);
         self.villains = response.data;
-        console.log("received villains")
+        console.log("received villains", self.villains);
+        self.villainsSize = self.villains.length;
+      });
+    },
+    fetchHeroes: function(){
+      var self = this;
+      $.ajax({
+        method: "GET",
+        url: "/api/heroes"
+      }).done(function(response){
+        self.heroes = response.data;
+        console.log("received heroes", self.heroes);
+        console.log("received heroes")
+        self.heroesSize = self.heroes.length;
+        (self.heroesSize > self.villainsSize) ? self.heroes.splice(self.villainsSize, self.heroesSize - self.villainsSize) : self.villains.splice(self.heroesSize, self.villainsSize - self.heroesSize);
+        console.log("heroes", self.heroes, "villains", self.villains);
       });
     },
     postHero: function(){
